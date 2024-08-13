@@ -44,6 +44,7 @@ function playRound(){
     for (let i = 0; i <roundToPlay; i++){
         this.computerChose = getComputerChoice();
         this.humanChose = getHumanChoice();
+        console.clear();
 
         output();
 
