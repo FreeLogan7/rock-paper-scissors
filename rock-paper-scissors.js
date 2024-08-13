@@ -19,10 +19,16 @@ function gameAdapter(num){
 }
 
 // function for combining computer choice (allows for methods to be seperate)
-function computerChoice (){
+function getComputerChoice (){
     let number = random();
     let computerChoice = gameAdapter(number);
     console.log ("The computer has selected: " + computerChoice);
 }
 
-computerChoice()
+function getHumanChoice (){
+    let humanChoice = prompt("Rock, Paper, or Scissors");
+    humanChoice = humanChoice;
+    console.log(humanChoice);
+}
+
+getHumanChoice();
