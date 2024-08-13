@@ -3,6 +3,8 @@
 var options = 3;
 var humanPoints = 0;
 var computerPoints = 0;
+var humanChose ;
+var computerChose;
 
 
 function random(){
@@ -25,22 +27,38 @@ function gameAdapter(num){
 function getComputerChoice (){
     let number = random();
     let computerChoice = gameAdapter(number);
-    console.log ("The computer has selected: " + computerChoice);
+    return computerChoice;
 }
 
 function getHumanChoice (){
     let humanChoice = prompt("Rock, Paper, or Scissors");
     humanChoice = humanChoice;
     humanChoice = humanChoice[0].toUpperCase() + humanChoice.slice(1).toLowerCase();
-    console.log(humanChoice);
+    return humanChoice;
 }
 
 
-function addPoints (winner){
-    winner = +winner + 1;
+function playRound(){
+this.computerChose = getComputerChoice();
+this.humanChose = getHumanChoice();
+
+output();
+
+if (computerChose === humanChose) result(1)
+    else if (computerChose == "Rock" & humanChose == "Paper") result(2)
+    else if (computerChose == "Paper" & humanChose == "Scissors") result(2)
+    else if (computerChose == "Scissors" & humanChose == "Rock") result(2)
+    else if (computerChose == "Rock" & humanChose == "Scissors") result (3)
+    else if (computerChose == "Paper" & humanChose == "Rock") result (3)
+    else if (computerChose == "Scissors" & humanChose == "Paper") result (3)
 }
-console.log(humanPoints);
-addPoints(humanPoints);
-console.log(humanPoints);
-addPoints(humanPoints);
-console.log(humanPoints);
+
+
+function output(){
+console.log("Computer Chose: "+ computerChose);
+console.log("Human Chose: "+ humanChose);
+}
+
+
+
+playRound();
