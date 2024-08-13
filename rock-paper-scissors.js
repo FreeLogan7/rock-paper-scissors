@@ -88,5 +88,3 @@ function result(result){
          }
     }
 }
-
-playRound();
