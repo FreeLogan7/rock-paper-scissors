@@ -1,6 +1,9 @@
 
 //RANDOMIZER
 var options = 3;
+var humanPoints = 0;
+var computerPoints = 0;
+
 
 function random(){
 let randomNumber = Math.ceil(Math.random() * options);
@@ -32,4 +35,12 @@ function getHumanChoice (){
     console.log(humanChoice);
 }
 
-getHumanChoice();
+
+function addPoints (winner){
+    winner = +winner + 1;
+}
+console.log(humanPoints);
+addPoints(humanPoints);
+console.log(humanPoints);
+addPoints(humanPoints);
+console.log(humanPoints);
