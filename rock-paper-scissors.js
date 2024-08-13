@@ -60,5 +60,23 @@ console.log("Human Chose: "+ humanChose);
 }
 
 
+function result(result){
+    switch(result){
+        case(1):{
+            console.log("DRAW")
+            break;
+        }
+        case(2): {
+            console.log("Human Wins: "+ humanChose + " beats " +computerChose)
+            this.humanPoints = +humanPoints + 1;
+            break;
+         }
+        case(3): {
+            console.log("Computer Wins: " + computerChose + " beats " +humanChose); 
+            this.computerPoints = +computerPoints + 1;
+            break;
+         }
+    }
+}
 
 playRound();
