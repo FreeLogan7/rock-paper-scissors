@@ -5,6 +5,7 @@ var humanPoints = 0;
 var computerPoints = 0;
 var humanChose ;
 var computerChose;
+var roundToPlay = 5;
 
 
 function random(){
@@ -39,18 +40,23 @@ function getHumanChoice (){
 
 
 function playRound(){
-this.computerChose = getComputerChoice();
-this.humanChose = getHumanChoice();
 
-output();
+    for (let i = 0; i <roundToPlay; i++){
+        this.computerChose = getComputerChoice();
+        this.humanChose = getHumanChoice();
 
-if (computerChose === humanChose) result(1)
-    else if (computerChose == "Rock" & humanChose == "Paper") result(2)
-    else if (computerChose == "Paper" & humanChose == "Scissors") result(2)
-    else if (computerChose == "Scissors" & humanChose == "Rock") result(2)
-    else if (computerChose == "Rock" & humanChose == "Scissors") result (3)
-    else if (computerChose == "Paper" & humanChose == "Rock") result (3)
-    else if (computerChose == "Scissors" & humanChose == "Paper") result (3)
+        output();
+
+        if (computerChose === humanChose) result(1)
+            else if (computerChose == "Rock" & humanChose == "Paper") result(2)
+            else if (computerChose == "Paper" & humanChose == "Scissors") result(2)
+            else if (computerChose == "Scissors" & humanChose == "Rock") result(2)
+            else if (computerChose == "Rock" & humanChose == "Scissors") result (3)
+            else if (computerChose == "Paper" & humanChose == "Rock") result (3)
+            else if (computerChose == "Scissors" & humanChose == "Paper") result (3)
+
+     }
+
 }
 
 
@@ -64,16 +70,19 @@ function result(result){
     switch(result){
         case(1):{
             console.log("DRAW")
+            console.log("Computer: " + computerPoints + " Human: " + humanPoints);
             break;
         }
         case(2): {
-            console.log("Human Wins: "+ humanChose + " beats " +computerChose)
             this.humanPoints = +humanPoints + 1;
+            console.log("Human Wins: "+ humanChose + " beats " +computerChose)
+            console.log("Computer: " + computerPoints + " Human: " + humanPoints);
             break;
          }
         case(3): {
-            console.log("Computer Wins: " + computerChose + " beats " +humanChose); 
             this.computerPoints = +computerPoints + 1;
+            console.log("Computer Wins: " + computerChose + " beats " +humanChose); 
+            console.log("Computer: " + computerPoints + " Human: " + humanPoints);
             break;
          }
     }
