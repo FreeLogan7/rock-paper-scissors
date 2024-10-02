@@ -5,7 +5,7 @@ var humanPoints = 0;
 var computerPoints = 0;
 var humanChose ;
 var computerChose;
-var roundToPlay = 5;
+
 
 
 function random(){
@@ -41,7 +41,7 @@ function getHumanChoice (){
 
 function playRound(){
 
-    for (let i = 0; i <roundToPlay; i++){
+
         this.computerChose = getComputerChoice();
         this.humanChose = getHumanChoice();
         console.clear();
@@ -56,15 +56,10 @@ function playRound(){
             else if (computerChose == "Paper" & humanChose == "Rock") result (3)
             else if (computerChose == "Scissors" & humanChose == "Paper") result (3)
 
-     }
+
 
 }
 
-
-function output(){
-console.log("Computer Chose: "+ computerChose);
-console.log("Human Chose: "+ humanChose);
-}
 
 
 function result(result){
