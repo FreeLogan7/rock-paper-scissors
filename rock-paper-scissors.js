@@ -18,14 +18,8 @@ playRound(button.id);
 }
 
 function playRound(humanChoice){
-
-
         this.computerChose = getComputerChoice();
         this.humanChose = humanChoice;
-//        console.clear();
-
-        output();
-
         if (computerChose === humanChose) result(1)
             else if (computerChose == "Rock" & humanChose == "Paper") result(2)
             else if (computerChose == "Paper" & humanChose == "Scissors") result(2)
@@ -35,9 +29,9 @@ function playRound(humanChoice){
             else if (computerChose == "Scissors" & humanChose == "Paper") result (3)
 }
 
-function output(){
+function output(winner){
 displayChoices();
-displayWinner();
+displayWinner(winner);
 displayScore();
 }
 
@@ -61,10 +55,13 @@ document.body.appendChild(div);
     );
 }
 
-function displayWinner() {
+function displayWinner(winner) {
+alert(winner);
 }
 
 function displayScore(){
+const ans = document.querySelector("ans");
+ans.textContent = "Computer: " + computerPoints + " Human: " + humanPoints;
 }
 
 // function for combining computer choice (allows for methods to be separate)
@@ -78,19 +75,24 @@ function getComputerChoice (){
 function result(result){
     switch(result){
         case(1):{
+        output("DRAW");
             console.log("DRAW")
             console.log("Computer: " + computerPoints + " Human: " + humanPoints);
             break;
         }
         case(2): {
             this.humanPoints = +humanPoints + 1;
+                    output("Human Wins");
+
             console.log("Human Wins: "+ humanChose + " beats " +computerChose)
             console.log("Computer: " + computerPoints + " Human: " + humanPoints);
             break;
          }
         case(3): {
             this.computerPoints = +computerPoints + 1;
-            console.log("Computer Wins: " + computerChose + " beats " +humanChose); 
+                    output("Computer Wins");
+
+            console.log("Computer Wins: " + computerChose + " beats " +humanChose);
             console.log("Computer: " + computerPoints + " Human: " + humanPoints);
             break;
          }
