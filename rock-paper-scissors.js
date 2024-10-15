@@ -60,8 +60,8 @@ alert(winner);
 }
 
 function displayScore(){
-const ans = document.querySelector("ans");
-ans.textContent = "Computer: " + computerPoints + " Human: " + humanPoints;
+const display = document.querySelector("#scoreDisplay");
+display.textContent = "Computer: " + computerPoints + " Human: " + humanPoints;
 }
 
 // function for combining computer choice (allows for methods to be separate)
