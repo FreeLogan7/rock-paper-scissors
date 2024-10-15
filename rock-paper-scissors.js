@@ -51,7 +51,7 @@ span1.style.cssText = "color: green; border: 2px solid pink; display: inline-blo
 
 const span2 = document.createElement("span");
 span2.textContent = `Computer Chose: ${this.computerChose}`;
-span2.style.cssText = "color: light red; border: 2px solid pink; display: inline-block; ";
+span2.style.cssText = "color: red; border: 2px solid pink; display: inline-block; ";
 
  div.replaceChildren(
         span1,
