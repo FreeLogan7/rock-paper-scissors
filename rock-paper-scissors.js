@@ -1,22 +1,27 @@
-//RANDOMIZER
+//VARIABLES
 var options = 3;
 var humanPoints = 0;
 var computerPoints = 0;
 var humanChose;
 var computerChose;
+
+//START THE CODE
 attachEvent();
 
+
+//ADD 'CLICK' TO ALL BUTTONS
 function attachEvent() {
   const buttons = document.querySelectorAll("button");
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      while (winner == false) {
+      if (humanPoints<5 && computerPoints<5) {
         playRound(button.id);
       }
     });
   });
 }
 
+//BUTTON SELECTED IS COMPARED TO COMPUTER CHOICE
 function playRound(humanChoice) {
   this.computerChose = getComputerChoice();
   this.humanChose = humanChoice;
