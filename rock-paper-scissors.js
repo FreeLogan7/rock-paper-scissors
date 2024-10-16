@@ -12,7 +12,11 @@ function attachEvent(){
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
 button.addEventListener("click", () => {
+while (winner==false)
+{
 playRound(button.id);
+}
+
 })
 });
 }
