@@ -41,21 +41,21 @@ function playGame(humanChoice){
 function playRound(humanChoice) {
   this.computerChose = getComputerChoice();
   this.humanChose = humanChoice;
-  if (computerChose === humanChose) return(1);
-  else if ((computerChose == "Rock") & (humanChose == "Paper")) return(2);
-  else if ((computerChose == "Paper") & (humanChose == "Scissors")) return(2);
-  else if ((computerChose == "Scissors") & (humanChose == "Rock")) return(2);
-  else if ((computerChose == "Rock") & (humanChose == "Scissors")) return(3);
-  else if ((computerChose == "Paper") & (humanChose == "Rock")) return(3);
-  else if ((computerChose == "Scissors") & (humanChose == "Paper")) return(3);
+  if (computerChose === humanChose) return("Draw");
+  else if ((computerChose == "Rock") & (humanChose == "Paper")) return("Human");
+  else if ((computerChose == "Paper") & (humanChose == "Scissors")) return("Human");
+  else if ((computerChose == "Scissors") & (humanChose == "Rock")) return("Human");
+  else if ((computerChose == "Rock") & (humanChose == "Scissors")) return("Computer");
+  else if ((computerChose == "Paper") & (humanChose == "Rock")) return("Computer");
+  else if ((computerChose == "Scissors") & (humanChose == "Paper")) return("Computer");
 }
 
 function updateScoreboard(roundWinner) {
   switch (roundWinner) {
-    case 1: {
+    case "Draw": {
       break;
     }
-    case 2: {
+    case "Human": {
       this.humanPoints = +humanPoints + 1;
       if (this.humanPoints == 5) {
         this.winner = "Human Wins";
@@ -63,7 +63,7 @@ function updateScoreboard(roundWinner) {
       }
       break;
     }
-    case 3: {
+    case "Computer": {
       this.computerPoints = +computerPoints + 1;
       if (this.computerPoints == 5) {
         this.winner = "Computer Wins";
@@ -91,29 +91,6 @@ function output(winner, color) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
 function displayChoices() {
   let div = document.getElementById("chosenDiv");
 
@@ -136,9 +113,6 @@ function displayChoices() {
 
   div.replaceChildren(span1, document.createElement("br"), span2);
 }
-
-
-
 
 
 function displayScore() {
