@@ -1,60 +1,40 @@
-//VARIABLES
-const bestOf = 5;
-var options = 3;
-var humanPoints = 0;
-var computerPoints = 0;
-var humanChose;
-var computerChose;
+//SET VARIABLES
+////////////////////////////
+  const bestOf = 5;
+  var options = 3;
+  var humanPoints = 0;
+  var computerPoints = 0;
+  var winner;
+  var winnerColor;
+  var run = true;
+  var humanChose;
+  var computerChose;
+////////////////////////////
+
 
 //START THE CODE
-
-//Set # of games
-var run = playTo(bestOf);
-
-//Attach & GET id of 'Click'
-if (run) {
-  let humanChoice = attachEvent();
-
-  //Get Round Winner WITH id
-  //roundWinner = 1, 2, or 3
-  var roundWinner = playRound(humanChoice);
-
-  //update Scoreboard!!
-  updateScoreboard(roundWinner);
-
-  var winner = whoWon(roundWinner);
-
-  //Get ROUND Winner -- IF GAME IS OVER DISPLAY Final WINNER
-  output(winner, roundWinner);
-
-
-
-}
-//whoWon 
-whoWon(roundWinner)
-{
-  switch (roundWinner){
-    case(1): {return "DRAW"}
-    case(2): {return "Human"}
-    case(3): {return "Computer"}
-  }
-}
-
-
-
+attachEvent();
 
 function playTo(bestOf){
-return (humanPoints<5 && computerPoints<5)
-}
+  return (humanPoints<bestOf && computerPoints<bestOf)
+  }
 
 //ADD 'CLICK' TO ALL BUTTONS
 function attachEvent() {
   const buttons = document.querySelectorAll("button");
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-        return button.id;
+      this.run = playTo(bestOf);
+      if (run) playGame(button.id);
     });
   });
+}
+
+function playGame(humanChoice){
+  var roundWinner = playRound(humanChoice);
+  updateScoreboard(roundWinner);
+  var winner = whoWon(roundWinner);
+  output(winner, roundWinner);
 }
 
 //BUTTON SELECTED IS COMPARED TO COMPUTER CHOICE
@@ -70,11 +50,69 @@ function playRound(humanChoice) {
   else if ((computerChose == "Scissors") & (humanChose == "Paper")) return(3);
 }
 
+function updateScoreboard(roundWinner) {
+  switch (roundWinner) {
+    case 1: {
+      break;
+    }
+    case 2: {
+      this.humanPoints = +humanPoints + 1;
+      if (this.humanPoints == 5) {
+        this.winner = "Human Wins";
+        this.winnerColor = 2;
+      }
+      break;
+    }
+    case 3: {
+      this.computerPoints = +computerPoints + 1;
+      if (this.computerPoints == 5) {
+        this.winner = "Computer Wins";
+        this.winnerColor = 3;
+      }
+      break;
+    }
+  }
+}
+
+function whoWon(roundWinner)
+{
+  switch (roundWinner){
+    case 1: return "DRAW";
+    case 2: return "Human";
+    case 3: return "Computer";
+  }
+  
+}
+
 function output(winner, color) {
   displayChoices();
-  displayWinner(winner, color);
   displayScore();
+  if(this.winner != null)  displayWinner(this.winner, this.winnerColor);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
 
 function displayChoices() {
   let div = document.getElementById("chosenDiv");
@@ -101,28 +139,7 @@ function displayChoices() {
 
 
 
-// function for combining computer choice (allows for methods to be separate)
-function getComputerChoice() {
-  let number = random();
-  let computerChoice = gameAdapter(number);
-  return computerChoice;
-}
 
-function updateScoreboard(roundWinner) {
-  switch (roundWinner) {
-    case 1: {
-      break;
-    }
-    case 2: {
-      this.humanPoints = +humanPoints + 1;
-      break;
-    }
-    case 3: {
-      this.computerPoints = +computerPoints + 1;
-      break;
-    }
-  }
-}
 
 function displayScore() {
   const display = document.querySelector("#scoreDisplay");
@@ -136,7 +153,6 @@ function displayWinner(winner, color) {
   if (!div) {
     div = document.createElement("div");
     div.id = "winner";
-
     document.body.appendChild(div);
   }
 
@@ -157,8 +173,15 @@ function displayWinner(winner, color) {
       break;
     }
   }
-
   div.replaceChildren(winner);
+}
+
+
+// function for combining computer choice (allows for methods to be separate)
+function getComputerChoice() {
+  let number = random();
+  let computerChoice = gameAdapter(number);
+  return computerChoice;
 }
 
 function random() {
