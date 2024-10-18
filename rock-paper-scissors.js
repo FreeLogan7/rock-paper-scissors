@@ -1,11 +1,9 @@
 //SET VARIABLES
 ////////////////////////////
   const bestOf = 5;
-  var options = 3;
   var humanPoints = 0;
   var computerPoints = 0;
-  var winner;
-  var winnerColor;
+  var options =3;
   var run = true;
   var humanChose;
   var computerChose;
@@ -13,41 +11,50 @@
 
 
 //START THE CODE
-attachEvent();
-
-function playTo(bestOf){
-  return (humanPoints<bestOf && computerPoints<bestOf)
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  attachEvent();
+});
 
 //ADD 'CLICK' TO ALL BUTTONS
 function attachEvent() {
   const buttons = document.querySelectorAll("button");
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
-      this.run = playTo(bestOf);
+      run = playTo(bestOf);
       if (run) playGame(button.id);
     });
   });
 }
 
+function playTo(bestOf){
+  return (humanPoints<bestOf && computerPoints<bestOf)
+  }
+
 function playGame(humanChoice){
+  //Check Winner of Round
   var roundWinner = playRound(humanChoice);
+  //Allocate winner + 1
   updateScoreboard(roundWinner);
-  var winner = whoWon(roundWinner);
-  output(winner, roundWinner);
+  //OUTPUT SCOREBOARD AND SELECTION
+  output();
+  //CHECK IF GAME IS OVER
+  if (humanPoints === bestOf || computerPoints === bestOf) {
+    let gameWinner = humanPoints === bestOf ? "Human Wins" : "Computer Wins";
+    let winnerColor = humanPoints === bestOf ? 2 : 3;
+    console.log(gameWinner)
+    displayWinner(gameWinner, winnerColor);
+  }
 }
 
 //BUTTON SELECTED IS COMPARED TO COMPUTER CHOICE
 function playRound(humanChoice) {
-  this.computerChose = getComputerChoice();
-  this.humanChose = humanChoice;
+  computerChose = getComputerChoice();
+  humanChose = humanChoice;
   if (computerChose === humanChose) return("Draw");
   else if ((computerChose == "Rock") & (humanChose == "Paper")) return("Human");
   else if ((computerChose == "Paper") & (humanChose == "Scissors")) return("Human");
   else if ((computerChose == "Scissors") & (humanChose == "Rock")) return("Human");
-  else if ((computerChose == "Rock") & (humanChose == "Scissors")) return("Computer");
-  else if ((computerChose == "Paper") & (humanChose == "Rock")) return("Computer");
-  else if ((computerChose == "Scissors") & (humanChose == "Paper")) return("Computer");
+  else return "Computer";
 }
 
 function updateScoreboard(roundWinner) {
@@ -56,38 +63,19 @@ function updateScoreboard(roundWinner) {
       break;
     }
     case "Human": {
-      this.humanPoints = +humanPoints + 1;
-      if (this.humanPoints == 5) {
-        this.winner = "Human Wins";
-        this.winnerColor = 2;
-      }
+      humanPoints += 1;
       break;
     }
     case "Computer": {
-      this.computerPoints = +computerPoints + 1;
-      if (this.computerPoints == 5) {
-        this.winner = "Computer Wins";
-        this.winnerColor = 3;
-      }
+      computerPoints += 1;
       break;
     }
   }
 }
 
-function whoWon(roundWinner)
-{
-  switch (roundWinner){
-    case 1: return "DRAW";
-    case 2: return "Human";
-    case 3: return "Computer";
-  }
-  
-}
-
-function output(winner, color) {
+function output() {
   displayChoices();
   displayScore();
-  if(this.winner != null)  displayWinner(this.winner, this.winnerColor);
 }
 
 
@@ -97,17 +85,17 @@ function displayChoices() {
   if (!div) {
     div = document.createElement("div");
     div.id = "chosenDiv";
-    div.style.cssText = "color: blue; font-weight: bold;";
+    div.style.cssText = "color: blue; font-weight: bold; margin: 20px; font-size: 30px";
     document.body.appendChild(div);
   }
 
   const span1 = document.createElement("span");
-  span1.textContent = `You Chose: ${this.humanChose}`;
+  span1.textContent = `You Chose: ${humanChose}`;
   span1.style.cssText =
-    "color: green; border: 2px solid pink; display: inline-block;";
+    "color: green; border: 2px solid pink; display: inline-block; margin-bottom: 10px;";
 
   const span2 = document.createElement("span");
-  span2.textContent = `Computer Chose: ${this.computerChose}`;
+  span2.textContent = `Computer Chose: ${computerChose}`;
   span2.style.cssText =
     "color: red; border: 2px solid pink; display: inline-block; ";
 
